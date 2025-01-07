@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<project name="jlox" basedir="." default="jar">
+  <property name="source.dir" value="src" />
+  <property name="class.dir" value="bin" />
+
+  <target name="clean" description="delete old files">
+    <delete dir="${class.dir}" />
+  </target>
+
+  <target name="compile" description="build class files">
+    <mkdir dir="${class.dir}" />
+    <javac srcdir="${source.dir}" includeantruntime="false" destdir="${class.dir}" release="9">
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="jlox.jar" basedir="${class.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="jlox.src.Lox" />
+      </manifest>
+    </jar>
+  </target>
+
+</project>
